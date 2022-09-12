@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    image: parking-control:latest
+#    container_name: parking-control
+#    ports:
+#      - "8000:8080"
+#    depends_on:
+#      -   postgres
+#    command: [ "-c", "java -jar /app/parking-control.jar" ]
+
+  postgres:
+    image: postgres:10.5
+    container_name: 'postgresYoutube'
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=parking-control-db
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgresVol:/var/lib/postgresql/data
+#      - ./postgres:/var/lib/postgresql/data
+
+volumes:
+  postgresVol:
